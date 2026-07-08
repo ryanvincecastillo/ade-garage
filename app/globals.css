@@ -72,6 +72,14 @@ body {
   @apply inline-flex items-center justify-center rounded-xl border border-ade-border bg-white px-5 py-2.5 text-sm font-bold text-ade-charcoal transition hover:border-ade-cyan hover:shadow-[0_0_20px_rgba(0,200,240,0.15)];
 }
 
+.btn-outline-light {
+  @apply inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-sm transition hover:border-ade-cyan/50 hover:bg-white/10;
+}
+
+.btn-ghost-dark {
+  @apply inline-flex items-center justify-center rounded-xl border border-ade-border bg-ade-surface px-5 py-2.5 text-sm font-bold text-white transition hover:border-ade-cyan hover:text-ade-cyan;
+}
+
 .garage-card {
   @apply rounded-2xl border border-ade-border bg-ade-surface shadow-[0_4px_24px_rgba(0,0,0,0.25)];
 }

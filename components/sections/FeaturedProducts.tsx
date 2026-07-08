@@ -23,7 +23,7 @@ export default function FeaturedProducts() {
           </div>
           <Link
             href="/shop"
-            className="btn-secondary shrink-0 border-ade-border bg-ade-surface text-white hover:border-ade-cyan"
+            className="btn-ghost-dark shrink-0"
           >
             View all parts
           </Link>

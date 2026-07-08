@@ -63,7 +63,7 @@ export default function ShopContent() {
         </div>
 
         <div className="section-container py-10">
-          <div className="mb-6 flex flex-wrap gap-2">
+          <div className="mb-6 flex gap-2 overflow-x-auto pb-1">
             {(
               [
                 { id: "all", label: "All types" },
@@ -75,7 +75,7 @@ export default function ShopContent() {
                 key={t.id}
                 type="button"
                 onClick={() => setProductType(t.id)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
                   productType === t.id
                     ? "bg-ade-accent text-ade-charcoal shadow-md"
                     : "bg-white text-ade-steel ring-1 ring-ade-border-light hover:ring-ade-cyan"
@@ -100,7 +100,7 @@ export default function ShopContent() {
                 className="w-full rounded-xl border border-ade-border-light bg-white py-3 pl-10 pr-4 text-sm outline-none focus:border-ade-cyan focus:ring-2 focus:ring-ade-cyan/20"
               />
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 overflow-x-auto pb-1 lg:flex-wrap lg:overflow-visible">
               <button
                 type="button"
                 onClick={() => setCategory("all")}
@@ -117,7 +117,7 @@ export default function ShopContent() {
                   key={cat.id}
                   type="button"
                   onClick={() => setCategory(cat.id)}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
                     category === cat.id
                       ? "bg-gradient-to-r from-ade-cyan to-ade-blue text-white shadow-md"
                       : "bg-white text-ade-steel ring-1 ring-ade-border-light hover:ring-ade-cyan"

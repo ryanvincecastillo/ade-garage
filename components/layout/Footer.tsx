@@ -5,7 +5,7 @@ import { MapPin, Phone, Share2 } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-ade-charcoal text-white">
+    <footer id="contact" className="scroll-mt-20 bg-ade-charcoal text-white">
       <div className="section-container py-12">
         <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
           </div>
           <Link href="/shop" className="btn-primary w-fit">
-            Browse all parts
+            Browse parts
           </Link>
         </div>
 

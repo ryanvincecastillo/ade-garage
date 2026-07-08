@@ -15,25 +15,18 @@ const navLinks = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lastY, setLastY] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 20);
-      setHidden(y > lastY && y > 120);
-      setLastY(y);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [lastY]);
+  }, []);
 
   return (
     <motion.header
       initial={{ y: 0 }}
-      animate={{ y: hidden ? -80 : 0 }}
+      animate={{ y: 0 }}
       transition={spring}
       className={`fixed inset-x-0 top-0 z-50 backdrop-blur-xl transition-shadow duration-300 ${
         scrolled

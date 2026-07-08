@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { Product } from "@/lib/products";
 import { brand } from "@/lib/brand";
 import PlatformIcon, { type Platform } from "@/components/ui/PlatformIcon";
@@ -10,11 +11,14 @@ type ChannelButtonsProps = {
   size?: "sm" | "md";
   /** Keep card heights equal by always rendering all four channel rows */
   showAllChannels?: boolean;
+  /** Grid cards: show primary channels + link to product page */
+  compact?: boolean;
 };
 
 const channelConfig = {
   shopee: {
     label: "Order on Shopee",
+    shortLabel: "Shopee",
     platform: "shopee" as Platform,
     className:
       "bg-[#EE4D2D] text-white hover:bg-[#d73211] border border-[#EE4D2D]",
@@ -22,6 +26,7 @@ const channelConfig = {
   },
   tiktokShop: {
     label: "Order on TikTok Shop",
+    shortLabel: "TikTok Shop",
     platform: "tiktok" as Platform,
     className:
       "bg-ade-charcoal text-white hover:bg-black border border-ade-charcoal",
@@ -29,12 +34,14 @@ const channelConfig = {
   },
   lazada: {
     label: "Lazada — coming soon",
+    shortLabel: "Lazada",
     platform: "lazada" as Platform,
     className: "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200",
     iconVariant: "color" as const,
   },
   messenger: {
     label: "Ask on Messenger",
+    shortLabel: "Messenger",
     platform: "messenger" as Platform,
     className:
       "bg-[#0084FF] text-white hover:bg-[#0073e6] border border-[#0084FF]",
@@ -47,11 +54,45 @@ export default function ChannelButtons({
   layout = "row",
   size = "md",
   showAllChannels = false,
+  compact = false,
 }: ChannelButtonsProps) {
   const padding = size === "sm" ? "px-3 py-2 text-xs" : "px-4 py-2.5 text-sm";
   const flexClass =
     layout === "row" ? "flex flex-wrap gap-2" : "flex flex-col gap-2";
   const iconSize = size === "sm" ? 18 : 20;
+
+  if (compact) {
+    return (
+      <div className={flexClass}>
+        <a
+          href={product.channels.shopee ?? brand.urls.shopee}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex w-full items-center justify-center gap-2 rounded-xl font-semibold shadow-sm transition hover:shadow-md active:scale-[0.98] ${padding} ${channelConfig.shopee.className}`}
+        >
+          <PlatformIcon platform="shopee" size={iconSize} variant="white" />
+          {channelConfig.shopee.shortLabel}
+        </a>
+        <a
+          href={`${brand.urls.messenger}?text=${encodeURIComponent(
+            `Hi ADe Garage! I'm interested in: ${product.title}. Does this fit my bike?`,
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex w-full items-center justify-center gap-2 rounded-xl font-semibold shadow-sm transition hover:shadow-md active:scale-[0.98] ${padding} ${channelConfig.messenger.className}`}
+        >
+          <PlatformIcon platform="messenger" size={iconSize} variant="white" />
+          {channelConfig.messenger.shortLabel}
+        </a>
+        <Link
+          href={`/shop/${product.slug}`}
+          className="inline-flex w-full items-center justify-center gap-1 rounded-xl border border-ade-border py-2 text-xs font-semibold text-ade-steel transition hover:border-ade-cyan hover:text-ade-cyan"
+        >
+          All order options →
+        </Link>
+      </div>
+    );
+  }
 
   const items: Array<{
     key: keyof typeof channelConfig;
