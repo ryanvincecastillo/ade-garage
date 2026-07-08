@@ -25,12 +25,11 @@ const iconMap = {
 
 export default function Categories() {
   return (
-    <section className="relative overflow-hidden bg-ade-blue-deep py-20">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,200,240,0.08)_0%,transparent_70%)]" />
-      <div className="section-container relative">
+    <section className="border-y border-ade-border-light bg-white py-20">
+      <div className="section-container">
         <Reveal className="mb-12 text-center">
           <p className="section-eyebrow">Categories</p>
-          <h2 className="section-title mt-2 text-white">Shop by part type</h2>
+          <h2 className="section-title mt-2">Shop by part type</h2>
         </Reveal>
 
         <motion.div
@@ -46,7 +45,7 @@ export default function Categories() {
               <motion.div key={cat.id} variants={staggerItem}>
                 <Link
                   href={`/shop?category=${cat.id}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-ade-border bg-ade-surface p-5 transition hover:-translate-y-1 hover:border-ade-cyan/40 hover:shadow-[0_0_30px_rgba(0,200,240,0.15)]"
+                  className="garage-card-light group flex items-center gap-4 p-5 transition hover:-translate-y-1 hover:border-ade-cyan/30 hover:shadow-[0_8px_28px_rgba(0,200,240,0.12)]"
                 >
                   <motion.div
                     whileHover={{ rotate: [0, -8, 8, 0] }}
@@ -55,7 +54,7 @@ export default function Categories() {
                   >
                     <Icon size={22} />
                   </motion.div>
-                  <span className="font-display text-lg font-bold text-white transition group-hover:text-ade-cyan">
+                  <span className="font-display text-lg font-bold text-ade-charcoal transition group-hover:text-ade-cyan">
                     {cat.label}
                   </span>
                 </Link>

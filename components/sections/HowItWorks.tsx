@@ -7,7 +7,7 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-20 border-y border-ade-border-light bg-white py-20">
+    <section id="how-it-works" className="scroll-mt-20 bg-white py-20">
       <div className="section-container">
         <Reveal className="mb-12 text-center">
           <p className="section-eyebrow">How it works</p>

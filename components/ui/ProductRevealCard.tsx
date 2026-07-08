@@ -17,12 +17,17 @@ import { ArrowUpRight } from "lucide-react";
 
 type ProductRevealCardProps = {
   product: Product;
+  theme?: "light" | "dark";
 };
 
-export default function ProductRevealCard({ product }: ProductRevealCardProps) {
+export default function ProductRevealCard({
+  product,
+  theme = "light",
+}: ProductRevealCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [finePointer, setFinePointer] = useState(false);
+  const isLight = theme === "light";
 
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -69,6 +74,14 @@ export default function ProductRevealCard({ product }: ProductRevealCardProps) {
   const typeLabel = productTypeLabel(product.productType);
   const showHoverReveal = finePointer && hovered;
 
+  const cardShell = isLight
+    ? showHoverReveal
+      ? "border-ade-cyan/40 bg-white shadow-[0_8px_32px_rgba(0,200,240,0.15)]"
+      : "border-ade-border-light bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
+    : showHoverReveal
+      ? "border-ade-cyan/50 bg-ade-surface shadow-[0_0_40px_rgba(0,200,240,0.3)]"
+      : "border-ade-border bg-ade-surface shadow-[0_4px_24px_rgba(0,0,0,0.3)]";
+
   return (
     <motion.article
       ref={cardRef}
@@ -88,11 +101,7 @@ export default function ProductRevealCard({ product }: ProductRevealCardProps) {
       className="group relative h-full"
     >
       <div
-        className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-ade-surface transition-all duration-500 ${
-          showHoverReveal
-            ? "border-ade-cyan/50 shadow-[0_0_40px_rgba(0,200,240,0.3)]"
-            : "border-ade-border shadow-[0_4px_24px_rgba(0,0,0,0.3)]"
-        }`}
+        className={`relative flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-500 ${cardShell}`}
       >
         <div
           className={`pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-ade-cyan/30 via-transparent to-ade-blue/30 transition-opacity duration-500 ${
@@ -125,7 +134,7 @@ export default function ProductRevealCard({ product }: ProductRevealCardProps) {
             />
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-ade-charcoal via-ade-charcoal/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ade-charcoal/80 via-ade-charcoal/20 to-transparent" />
 
           <div className="absolute left-3 top-3 z-10 flex flex-col gap-1.5">
             {product.featured && (
@@ -146,7 +155,6 @@ export default function ProductRevealCard({ product }: ProductRevealCardProps) {
             )}
           </div>
 
-          {/* Desktop hover reveal */}
           {finePointer && (
             <motion.div
               initial={false}
@@ -168,7 +176,11 @@ export default function ProductRevealCard({ product }: ProductRevealCardProps) {
         <div className="relative flex min-h-0 flex-1 flex-col p-4 sm:p-5">
           <div className="min-h-[2.75rem]">
             <Link href={`/shop/${product.slug}`}>
-              <h3 className="font-display line-clamp-2 text-base font-bold leading-snug text-white transition group-hover:text-ade-cyan">
+              <h3
+                className={`font-display line-clamp-2 text-base font-bold leading-snug transition group-hover:text-ade-cyan ${
+                  isLight ? "text-ade-charcoal" : "text-white"
+                }`}
+              >
                 {product.title}
               </h3>
             </Link>
@@ -178,9 +190,8 @@ export default function ProductRevealCard({ product }: ProductRevealCardProps) {
             {product.compatibility ?? "\u00A0"}
           </p>
 
-          {/* Mobile: always show short description */}
           {!finePointer && (
-            <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-white/55">
+            <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-ade-steel">
               {product.description}
             </p>
           )}
@@ -195,6 +206,7 @@ export default function ProductRevealCard({ product }: ProductRevealCardProps) {
               layout="column"
               size="sm"
               compact
+              theme={theme}
             />
           </div>
         </div>
