@@ -8,6 +8,8 @@ type ChannelButtonsProps = {
   product: Product;
   layout?: "row" | "column";
   size?: "sm" | "md";
+  /** Keep card heights equal by always rendering all four channel rows */
+  showAllChannels?: boolean;
 };
 
 const channelConfig = {
@@ -16,23 +18,27 @@ const channelConfig = {
     platform: "shopee" as Platform,
     className:
       "bg-[#EE4D2D] text-white hover:bg-[#d73211] border border-[#EE4D2D]",
+    iconVariant: "white" as const,
   },
   tiktokShop: {
     label: "Order on TikTok Shop",
     platform: "tiktok" as Platform,
     className:
       "bg-ade-charcoal text-white hover:bg-black border border-ade-charcoal",
+    iconVariant: "white" as const,
   },
   lazada: {
     label: "Lazada — coming soon",
     platform: "lazada" as Platform,
     className: "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200",
+    iconVariant: "color" as const,
   },
   messenger: {
     label: "Ask on Messenger",
     platform: "messenger" as Platform,
     className:
       "bg-[#0084FF] text-white hover:bg-[#0073e6] border border-[#0084FF]",
+    iconVariant: "white" as const,
   },
 } as const;
 
@@ -40,19 +46,34 @@ export default function ChannelButtons({
   product,
   layout = "row",
   size = "md",
+  showAllChannels = false,
 }: ChannelButtonsProps) {
   const padding = size === "sm" ? "px-3 py-2 text-xs" : "px-4 py-2.5 text-sm";
-  const flexClass = layout === "row" ? "flex flex-wrap gap-2" : "flex flex-col gap-2";
-  const iconSize = size === "sm" ? 16 : 18;
+  const flexClass =
+    layout === "row" ? "flex flex-wrap gap-2" : "flex flex-col gap-2";
+  const iconSize = size === "sm" ? 18 : 20;
 
   const items: Array<{
     key: keyof typeof channelConfig;
     href: string | null;
     disabled?: boolean;
+    label?: string;
   }> = [
     { key: "shopee", href: product.channels.shopee ?? brand.urls.shopee },
-    { key: "tiktokShop", href: product.channels.tiktokShop ?? null },
-    { key: "lazada", href: product.channels.lazada ?? null, disabled: true },
+    {
+      key: "tiktokShop",
+      href: product.channels.tiktokShop ?? null,
+      disabled: showAllChannels && !product.channels.tiktokShop,
+      label:
+        showAllChannels && !product.channels.tiktokShop
+          ? "Not on TikTok Shop"
+          : undefined,
+    },
+    {
+      key: "lazada",
+      href: product.channels.lazada ?? null,
+      disabled: true,
+    },
     {
       key: "messenger",
       href: `${brand.urls.messenger}?text=${encodeURIComponent(
@@ -63,24 +84,44 @@ export default function ChannelButtons({
 
   return (
     <div className={flexClass}>
-      {items.map(({ key, href, disabled }) => {
+      {items.map(({ key, href, disabled, label }) => {
         const config = channelConfig[key];
+        const displayLabel = label ?? config.label;
 
-        if (key === "tiktokShop" && !href) return null;
+        if (key === "tiktokShop" && !href && !showAllChannels) return null;
 
-        if (disabled || (key === "lazada" && !href)) {
-          if (key === "lazada") {
-            return (
-              <span
-                key={key}
-                className={`inline-flex items-center justify-center gap-2 rounded-xl font-semibold ${padding} ${config.className}`}
-              >
-                <PlatformIcon platform={config.platform} size={iconSize} />
-                {config.label}
-              </span>
-            );
-          }
-          return null;
+        if (disabled && key === "lazada") {
+          return (
+            <span
+              key={key}
+              className={`inline-flex w-full items-center justify-center gap-2 rounded-xl font-semibold ${padding} ${config.className}`}
+            >
+              <PlatformIcon
+                platform={config.platform}
+                size={iconSize}
+                variant={config.iconVariant}
+              />
+              {displayLabel}
+            </span>
+          );
+        }
+
+        if (disabled) {
+          return (
+            <span
+              key={key}
+              className={`inline-flex w-full items-center justify-center gap-2 rounded-xl font-semibold ${padding} bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed`}
+            >
+              {key !== "tiktokShop" && (
+                <PlatformIcon
+                  platform={config.platform}
+                  size={iconSize}
+                  variant={config.iconVariant}
+                />
+              )}
+              {displayLabel}
+            </span>
+          );
         }
 
         return (
@@ -89,10 +130,14 @@ export default function ChannelButtons({
             href={href!}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center gap-2 rounded-xl font-semibold shadow-sm transition hover:shadow-md active:scale-[0.98] ${padding} ${config.className}`}
+            className={`inline-flex w-full items-center justify-center gap-2 rounded-xl font-semibold shadow-sm transition hover:shadow-md active:scale-[0.98] ${padding} ${config.className}`}
           >
-            <PlatformIcon platform={config.platform} size={iconSize} />
-            {config.label}
+            <PlatformIcon
+              platform={config.platform}
+              size={iconSize}
+              variant={config.iconVariant}
+            />
+            {displayLabel}
           </a>
         );
       })}

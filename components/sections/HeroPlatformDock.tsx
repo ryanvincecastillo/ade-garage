@@ -7,42 +7,50 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const platforms = [
   {
-    id: "shopee",
+    id: "shopee" as const,
     name: "Shopee",
     subtitle: "Vouchers & buyer protection",
     href: brand.urls.shopee,
     disabled: false,
-    iconBg: "bg-[#EE4D2D]/15",
-    iconColor: "text-[#EE4D2D]",
+    iconBg: "bg-white",
+    iconVariant: "color" as const,
+    iconBox: "h-11 w-11",
+    iconSize: 28,
   },
   {
-    id: "tiktok",
+    id: "tiktok" as const,
     name: "TikTok Shop",
     subtitle: "Checkout in-app",
     href: brand.urls.tiktokShop,
     disabled: false,
-    iconBg: "bg-white/10",
-    iconColor: "text-white",
+    iconBg: "bg-black",
+    iconVariant: "white" as const,
+    iconBox: "h-11 w-11",
+    iconSize: 24,
   },
   {
-    id: "lazada",
+    id: "lazada" as const,
     name: "Lazada",
     subtitle: "Coming soon",
     href: null,
     disabled: true,
-    iconBg: "bg-[#0F146D]/20",
-    iconColor: "text-[#6B7FD7]",
+    iconBg: "bg-white",
+    iconVariant: "color" as const,
+    iconBox: "h-11 w-[4.5rem]",
+    iconSize: 22,
   },
   {
-    id: "messenger",
+    id: "messenger" as const,
     name: "Messenger",
     subtitle: "Ask fitment first",
     href: brand.urls.messenger,
     disabled: false,
-    iconBg: "bg-[#0084FF]/15",
-    iconColor: "text-[#0084FF]",
+    iconBg: "bg-[#0084FF]",
+    iconVariant: "white" as const,
+    iconBox: "h-11 w-11",
+    iconSize: 26,
   },
-] as const;
+];
 
 export default function HeroPlatformDock() {
   return (
@@ -56,9 +64,13 @@ export default function HeroPlatformDock() {
         const inner = (
           <>
             <div
-              className={`flex h-11 w-11 items-center justify-center rounded-xl ${p.iconBg} ${p.iconColor}`}
+              className={`flex shrink-0 items-center justify-center rounded-xl ${p.iconBg} ${p.iconBox}`}
             >
-              <PlatformIcon platform={p.id === "tiktok" ? "tiktok" : p.id} size={26} />
+              <PlatformIcon
+                platform={p.id}
+                size={p.iconSize}
+                variant={p.iconVariant}
+              />
             </div>
             <div className="min-w-0 flex-1">
               <p className="font-display truncate text-sm font-bold text-white sm:text-base">

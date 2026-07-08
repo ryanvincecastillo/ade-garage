@@ -133,9 +133,9 @@ export default function ShopContent() {
               No parts found. Try another search or filter.
             </p>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {products.map((product, i) => (
-                <Reveal key={product.id} delay={Math.min(i * 0.05, 0.4)}>
+                <Reveal key={product.id} delay={Math.min(i * 0.05, 0.4)} className="h-full">
                   <ProductCard product={product} />
                 </Reveal>
               ))}

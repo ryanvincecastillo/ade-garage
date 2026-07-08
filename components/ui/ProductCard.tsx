@@ -12,10 +12,10 @@ export default function ProductCard({ product }: ProductCardProps) {
   const typeLabel = productTypeLabel(product.productType);
 
   return (
-    <article className="garage-card group flex flex-col overflow-hidden">
+    <article className="garage-card group flex h-full flex-col overflow-hidden">
       <Link
         href={`/shop/${product.slug}`}
-        className="relative aspect-[4/3] overflow-hidden bg-ade-charcoal-light"
+        className="relative aspect-[4/3] shrink-0 overflow-hidden bg-ade-charcoal-light"
       >
         <ProductImage
           src={product.image}
@@ -41,20 +41,31 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
       </Link>
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <Link href={`/shop/${product.slug}`}>
-          <h3 className="font-display line-clamp-2 text-base font-bold leading-snug text-ade-charcoal transition group-hover:text-ade-orange">
-            {product.title}
-          </h3>
-        </Link>
-        {product.compatibility && (
-          <p className="mt-1 text-xs text-ade-steel">{product.compatibility}</p>
-        )}
+
+      <div className="flex min-h-0 flex-1 flex-col p-4 sm:p-5">
+        <div className="min-h-[2.75rem]">
+          <Link href={`/shop/${product.slug}`}>
+            <h3 className="font-display line-clamp-2 text-base font-bold leading-snug text-ade-charcoal transition group-hover:text-ade-orange">
+              {product.title}
+            </h3>
+          </Link>
+        </div>
+
+        <p className="mt-1 min-h-[1rem] text-xs text-ade-steel">
+          {product.compatibility ?? "\u00A0"}
+        </p>
+
         <p className="mt-2 font-display text-lg font-extrabold text-ade-orange">
           {formatPrice(product.price, product.currency)}
         </p>
+
         <div className="mt-auto pt-3">
-          <ChannelButtons product={product} size="sm" />
+          <ChannelButtons
+            product={product}
+            layout="column"
+            size="sm"
+            showAllChannels
+          />
         </div>
       </div>
     </article>
