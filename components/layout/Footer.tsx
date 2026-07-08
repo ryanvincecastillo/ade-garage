@@ -9,13 +9,15 @@ export default function Footer() {
       <div className="section-container py-12">
         <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <Image
-              src="/logo.jpg"
-              alt="ADe Garage"
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-full ring-2 ring-ade-orange/30"
-            />
+            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-white/10 ring-1 ring-white/15">
+              <Image
+                src="/logo.png"
+                alt="ADe Garage"
+                width={48}
+                height={48}
+                className="h-full w-full object-contain p-1"
+              />
+            </div>
             <div>
               <p className="font-display text-xl font-extrabold">ADe Garage</p>
               <p className="text-sm text-white/60">{brand.site.tagline}</p>

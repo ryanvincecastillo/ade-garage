@@ -9,7 +9,7 @@ import Footer from "@/components/layout/Footer";
 import ProductCard from "@/components/ui/ProductCard";
 import Reveal from "@/components/motion/Reveal";
 import { categories, type CategoryId } from "@/lib/brand";
-import { getAllProducts } from "@/lib/products";
+import { getAllProducts, type ProductTypeFilter } from "@/lib/products";
 
 export default function ShopContent() {
   const searchParams = useSearchParams();
@@ -18,11 +18,15 @@ export default function ShopContent() {
   const [category, setCategory] = useState<CategoryId | "all">(
     initialCategory ?? "all",
   );
+  const [productType, setProductType] = useState<ProductTypeFilter>("all");
 
   const products = useMemo(() => {
     let list = getAllProducts();
     if (category !== "all") {
       list = list.filter((p) => p.category === category);
+    }
+    if (productType !== "all") {
+      list = list.filter((p) => p.productType === productType);
     }
     if (query.trim()) {
       const q = query.toLowerCase();
@@ -34,7 +38,7 @@ export default function ShopContent() {
       );
     }
     return list;
-  }, [category, query]);
+  }, [category, productType, query]);
 
   return (
     <MotionProvider>
@@ -47,7 +51,7 @@ export default function ShopContent() {
                 Catalog
               </p>
               <h1 className="font-display mt-2 text-3xl font-extrabold sm:text-4xl">
-                Motorcycle parts
+                Thai concept & motorcycle parts
               </h1>
               <p className="mt-2 max-w-2xl text-white/70">
                 Browse our lineup and order on Shopee, TikTok Shop, or
@@ -58,6 +62,29 @@ export default function ShopContent() {
         </div>
 
         <div className="section-container py-10">
+          <div className="mb-6 flex flex-wrap gap-2">
+            {(
+              [
+                { id: "all", label: "All types" },
+                { id: "thai-concept", label: "Thai concept" },
+                { id: "genuine", label: "Genuine" },
+              ] as const
+            ).map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setProductType(t.id)}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  productType === t.id
+                    ? "bg-ade-accent text-ade-charcoal"
+                    : "bg-white text-ade-steel ring-1 ring-ade-border hover:ring-ade-orange"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative max-w-md flex-1">
               <Search
@@ -82,7 +109,7 @@ export default function ShopContent() {
                     : "bg-white text-ade-steel ring-1 ring-ade-border hover:ring-ade-orange"
                 }`}
               >
-                All
+                All categories
               </button>
               {categories.map((cat) => (
                 <button
@@ -103,7 +130,7 @@ export default function ShopContent() {
 
           {products.length === 0 ? (
             <p className="py-16 text-center text-ade-steel">
-              No parts found. Try another search or category.
+              No parts found. Try another search or filter.
             </p>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -2,7 +2,7 @@
 
 import type { Product } from "@/lib/products";
 import { brand } from "@/lib/brand";
-import { ExternalLink, MessageCircle, ShoppingBag } from "lucide-react";
+import PlatformIcon, { type Platform } from "@/components/ui/PlatformIcon";
 
 type ChannelButtonsProps = {
   product: Product;
@@ -13,23 +13,26 @@ type ChannelButtonsProps = {
 const channelConfig = {
   shopee: {
     label: "Order on Shopee",
-    icon: ShoppingBag,
-    className: "bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600",
+    platform: "shopee" as Platform,
+    className:
+      "bg-[#EE4D2D] text-white hover:bg-[#d73211] border border-[#EE4D2D]",
   },
   tiktokShop: {
     label: "Order on TikTok Shop",
-    icon: ExternalLink,
-    className: "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:from-black hover:to-gray-800",
+    platform: "tiktok" as Platform,
+    className:
+      "bg-ade-charcoal text-white hover:bg-black border border-ade-charcoal",
   },
   lazada: {
     label: "Lazada — coming soon",
-    icon: ShoppingBag,
-    className: "bg-gray-200 text-gray-500 cursor-not-allowed",
+    platform: "lazada" as Platform,
+    className: "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200",
   },
   messenger: {
     label: "Ask on Messenger",
-    icon: MessageCircle,
-    className: "bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700",
+    platform: "messenger" as Platform,
+    className:
+      "bg-[#0084FF] text-white hover:bg-[#0073e6] border border-[#0084FF]",
   },
 } as const;
 
@@ -40,6 +43,7 @@ export default function ChannelButtons({
 }: ChannelButtonsProps) {
   const padding = size === "sm" ? "px-3 py-2 text-xs" : "px-4 py-2.5 text-sm";
   const flexClass = layout === "row" ? "flex flex-wrap gap-2" : "flex flex-col gap-2";
+  const iconSize = size === "sm" ? 16 : 18;
 
   const items: Array<{
     key: keyof typeof channelConfig;
@@ -48,11 +52,7 @@ export default function ChannelButtons({
   }> = [
     { key: "shopee", href: product.channels.shopee ?? brand.urls.shopee },
     { key: "tiktokShop", href: product.channels.tiktokShop ?? null },
-    {
-      key: "lazada",
-      href: product.channels.lazada ?? null,
-      disabled: !product.channels.lazada,
-    },
+    { key: "lazada", href: product.channels.lazada ?? null, disabled: true },
     {
       key: "messenger",
       href: `${brand.urls.messenger}?text=${encodeURIComponent(
@@ -65,16 +65,17 @@ export default function ChannelButtons({
     <div className={flexClass}>
       {items.map(({ key, href, disabled }) => {
         const config = channelConfig[key];
-        const Icon = config.icon;
 
-        if (disabled || (key === "tiktokShop" && !href)) {
+        if (key === "tiktokShop" && !href) return null;
+
+        if (disabled || (key === "lazada" && !href)) {
           if (key === "lazada") {
             return (
               <span
                 key={key}
                 className={`inline-flex items-center justify-center gap-2 rounded-xl font-semibold ${padding} ${config.className}`}
               >
-                <Icon size={size === "sm" ? 14 : 16} />
+                <PlatformIcon platform={config.platform} size={iconSize} />
                 {config.label}
               </span>
             );
@@ -90,7 +91,7 @@ export default function ChannelButtons({
             rel="noopener noreferrer"
             className={`inline-flex items-center justify-center gap-2 rounded-xl font-semibold shadow-sm transition hover:shadow-md active:scale-[0.98] ${padding} ${config.className}`}
           >
-            <Icon size={size === "sm" ? 14 : 16} />
+            <PlatformIcon platform={config.platform} size={iconSize} />
             {config.label}
           </a>
         );

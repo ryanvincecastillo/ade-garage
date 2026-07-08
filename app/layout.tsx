@@ -17,9 +17,9 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL(brand.urls.site),
-  title: "ADe Garage — Motorcycle Parts | Ships Nationwide",
+  title: "ADe Garage — Thai Concept & Motorcycle Parts | Ships Nationwide",
   description:
-    "Genuine motorcycle parts in Tagum City. Browse our catalog and order on Shopee, TikTok Shop, or Messenger. Ships nationwide across the Philippines.",
+    "Thai concept and genuine motorcycle parts in Tagum City. Browse our catalog and order on Shopee, TikTok Shop, or Messenger. Ships nationwide.",
   keywords: [
     "ADe Garage",
     "motorcycle parts",
@@ -36,13 +36,13 @@ export const metadata: Metadata = {
       "Browse parts and order on Shopee, TikTok Shop, or Messenger. Ships nationwide.",
     url: brand.urls.site,
     siteName: "ADe Garage",
-    images: [{ url: "/logo.jpg", width: 200, height: 200, alt: "ADe Garage" }],
+    images: [{ url: "/logo.png", width: 720, height: 720, alt: "ADe Garage" }],
     locale: "en_PH",
     type: "website",
   },
   icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
@@ -53,7 +53,7 @@ const jsonLd = {
   description: brand.site.tagline,
   url: brand.urls.site,
   telephone: brand.site.phone,
-  image: `${brand.urls.site}/logo.jpg`,
+  image: `${brand.urls.site}/logo.png`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Prk. 6 San Miguel (Campo 4)",

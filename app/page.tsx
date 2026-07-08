@@ -2,7 +2,6 @@ import MotionProvider from "@/components/motion/MotionProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
-import ShopYourWay from "@/components/sections/ShopYourWay";
 import Categories from "@/components/sections/Categories";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
 import HowItWorks from "@/components/sections/HowItWorks";
@@ -14,9 +13,8 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <ShopYourWay />
-        <Categories />
         <FeaturedProducts />
+        <Categories />
         <HowItWorks />
         <SocialProof />
       </main>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -6,7 +5,13 @@ import MotionProvider from "@/components/motion/MotionProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ChannelButtons from "@/components/ui/ChannelButtons";
-import { formatPrice, getAllProducts, getProductBySlug } from "@/lib/products";
+import ProductImage from "@/components/ui/ProductImage";
+import {
+  formatPrice,
+  getAllProducts,
+  getProductBySlug,
+  productTypeLabel,
+} from "@/lib/products";
 import { categories } from "@/lib/brand";
 
 type Props = {
@@ -33,7 +38,9 @@ export default async function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const categoryLabel =
-    categories.find((c) => c.id === product.category)?.label ?? product.category;
+    categories.find((c) => c.id === product.category)?.label ??
+    product.category;
+  const typeLabel = productTypeLabel(product.productType);
 
   return (
     <MotionProvider>
@@ -50,20 +57,31 @@ export default async function ProductPage({ params }: Props) {
 
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="relative aspect-square overflow-hidden rounded-2xl bg-ade-charcoal-light">
-              <Image
+              <ProductImage
                 src={product.image}
                 alt={product.title}
-                fill
-                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
             </div>
 
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-ade-orange">
-                {categoryLabel}
-              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-xs font-bold uppercase tracking-widest text-ade-orange">
+                  {categoryLabel}
+                </p>
+                {typeLabel && (
+                  <span
+                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
+                      product.productType === "thai-concept"
+                        ? "bg-ade-accent text-ade-charcoal"
+                        : "bg-ade-orange-light text-ade-charcoal"
+                    }`}
+                  >
+                    {typeLabel}
+                  </span>
+                )}
+              </div>
               <h1 className="font-display mt-2 text-2xl font-extrabold text-ade-charcoal sm:text-3xl">
                 {product.title}
               </h1>

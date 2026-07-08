@@ -7,15 +7,11 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-ade-charcoal py-20 text-white">
+    <section id="how-it-works" className="border-y border-ade-border bg-white py-20">
       <div className="section-container">
         <Reveal className="mb-12 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-ade-orange">
-            How it works
-          </p>
-          <h2 className="font-display mt-2 text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
-            Browse here, order anywhere
-          </h2>
+          <p className="section-eyebrow">How it works</p>
+          <h2 className="section-title mt-2">Browse here, order anywhere</h2>
         </Reveal>
 
         <motion.ol
@@ -23,19 +19,21 @@ export default function HowItWorks() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid gap-8 md:grid-cols-3"
+          className="grid gap-6 md:grid-cols-3"
         >
           {howItWorks.map((step) => (
             <motion.li
               key={step.step}
               variants={staggerItem}
-              className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+              className="rounded-2xl border border-ade-border bg-ade-orange-light/30 p-6"
             >
-              <span className="font-display text-5xl font-extrabold text-ade-orange/30">
+              <span className="font-display text-4xl font-extrabold text-ade-orange/40">
                 {String(step.step).padStart(2, "0")}
               </span>
-              <h3 className="font-display mt-2 text-xl font-bold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">
+              <h3 className="font-display mt-2 text-lg font-bold text-ade-charcoal">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ade-steel">
                 {step.description}
               </p>
             </motion.li>

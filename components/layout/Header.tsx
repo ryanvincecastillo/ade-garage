@@ -9,7 +9,6 @@ import { spring } from "@/lib/animations";
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
-  { href: "/#channels", label: "Where to buy" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -44,14 +43,16 @@ export default function Header() {
     >
       <div className="section-container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <Image
-            src="/logo.jpg"
-            alt="ADe Garage"
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-full ring-2 ring-ade-orange/40"
-            priority
-          />
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-white/10 ring-1 ring-white/15">
+            <Image
+              src="/logo.png"
+              alt="ADe Garage"
+              width={40}
+              height={40}
+              className="h-full w-full object-contain p-0.5"
+              priority
+            />
+          </div>
           <span className="font-display text-lg font-extrabold tracking-tight text-white">
             ADe Garage
           </span>

@@ -1,29 +1,45 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/products";
-import { formatPrice } from "@/lib/products";
+import { formatPrice, productTypeLabel } from "@/lib/products";
 import ChannelButtons from "@/components/ui/ChannelButtons";
+import ProductImage from "@/components/ui/ProductImage";
 
 type ProductCardProps = {
   product: Product;
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const typeLabel = productTypeLabel(product.productType);
+
   return (
     <article className="garage-card group flex flex-col overflow-hidden">
-      <Link href={`/shop/${product.slug}`} className="relative aspect-[4/3] overflow-hidden bg-ade-charcoal-light">
-        <Image
+      <Link
+        href={`/shop/${product.slug}`}
+        className="relative aspect-[4/3] overflow-hidden bg-ade-charcoal-light"
+      >
+        <ProductImage
           src={product.image}
           alt={product.title}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        {product.featured && (
-          <span className="absolute left-3 top-3 rounded-full bg-ade-orange px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
-            Featured
-          </span>
-        )}
+        <div className="absolute left-3 top-3 flex flex-col gap-1.5">
+          {product.featured && (
+            <span className="rounded-full bg-ade-orange px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+              Featured
+            </span>
+          )}
+          {typeLabel && (
+            <span
+              className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${
+                product.productType === "thai-concept"
+                  ? "bg-ade-accent/90 text-ade-charcoal"
+                  : "bg-white/90 text-ade-charcoal"
+              }`}
+            >
+              {typeLabel}
+            </span>
+          )}
+        </div>
       </Link>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <Link href={`/shop/${product.slug}`}>
@@ -37,7 +53,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className="mt-2 font-display text-lg font-extrabold text-ade-orange">
           {formatPrice(product.price, product.currency)}
         </p>
-        <div className="mt-4 mt-auto pt-3">
+        <div className="mt-auto pt-3">
           <ChannelButtons product={product} size="sm" />
         </div>
       </div>

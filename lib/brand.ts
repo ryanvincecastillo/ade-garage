@@ -10,7 +10,7 @@ export const brand = {
   },
   site: {
     name: "ADe Garage",
-    tagline: "Genuine motorcycle parts — shipped nationwide",
+    tagline: "Thai concept & quality motorcycle parts — shipped nationwide",
     location: "Prk. 6 San Miguel (Campo 4), Tagum City",
     phone: "+63 985 447 5429",
     hours: "Always open",
@@ -77,9 +77,9 @@ export const categories = [
 ] as const;
 
 export const trustItems = [
-  "Genuine & quality parts",
+  "Thai concept bestsellers",
+  "Genuine parts",
   "Ships nationwide",
-  "Multiple ways to order",
   "Tagum pickup available",
 ] as const;
 

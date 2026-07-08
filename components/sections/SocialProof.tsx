@@ -1,24 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { brand } from "@/lib/brand";
 import Reveal from "@/components/motion/Reveal";
+import { brand } from "@/lib/brand";
+import { MapPin, MessageCircle } from "lucide-react";
 
 export default function SocialProof() {
   return (
     <section className="section-container py-20">
       <Reveal>
-        <div className="garage-card overflow-hidden">
+        <div className="overflow-hidden rounded-2xl border border-ade-border bg-ade-charcoal text-white">
           <div className="grid lg:grid-cols-2">
-            <div className="p-8 sm:p-10 lg:p-12">
-              <p className="section-eyebrow">Trusted locally</p>
-              <h2 className="section-title mt-2">
-                {brand.site.followers} riders follow ADe Garage
+            <div className="p-8 sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-widest text-ade-orange">
+                Visit us
+              </p>
+              <h2 className="font-display mt-2 text-2xl font-bold sm:text-3xl">
+                {brand.site.followers} riders trust ADe Garage
               </h2>
-              <p className="mt-4 text-ade-steel leading-relaxed">
-                Based in Tagum City, serving riders across Mindanao and
-                nationwide. Message us on Facebook if you&apos;re unsure a part
-                fits your bike — we&apos;re happy to help before you order.
+              <p className="mt-4 flex items-start gap-2 text-white/70">
+                <MapPin size={18} className="mt-0.5 shrink-0 text-ade-orange" />
+                {brand.site.location} — serving riders nationwide
+              </p>
+              <p className="mt-3 text-sm text-white/60">
+                Not sure a part fits? Message us before you order — we know
+                Raider, Ninja, and Thai concept setups.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
@@ -27,32 +32,37 @@ export default function SocialProof() {
                   rel="noopener noreferrer"
                   className="btn-primary"
                 >
-                  Follow on Facebook
+                  Facebook page
+                </a>
+                <a
+                  href={brand.urls.maps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary border-white/20 bg-white/10 text-white hover:bg-white/20"
+                >
+                  Open in Maps
                 </a>
                 <a
                   href={brand.urls.messenger}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary"
+                  className="inline-flex items-center gap-2 rounded-xl border border-[#0084FF]/40 bg-[#0084FF]/15 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#0084FF]/25"
                 >
-                  Message us
+                  <MessageCircle size={16} />
+                  Messenger
                 </a>
               </div>
             </div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative min-h-[240px] bg-gradient-to-br from-ade-orange/20 via-ade-charcoal to-ade-charcoal lg:min-h-0"
-            >
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <blockquote className="max-w-md text-center text-lg font-medium italic text-white/90">
-                  &ldquo;Quality parts, fast shipping. Order on Shopee or TikTok
-                  — same trusted ADe Garage.&rdquo;
-                </blockquote>
-              </div>
-            </motion.div>
+            <div className="flex flex-col justify-center gap-4 bg-gradient-to-br from-ade-orange/20 to-ade-charcoal p-8 sm:p-10">
+              <p className="text-sm font-semibold uppercase tracking-widest text-ade-orange">
+                Order on
+              </p>
+              <ul className="space-y-2 text-white/80">
+                <li>Shopee — shopee.ph/ade_garage</li>
+                <li>TikTok Shop — @ade_garage</li>
+                <li>Lazada — coming soon</li>
+              </ul>
+            </div>
           </div>
         </div>
       </Reveal>
