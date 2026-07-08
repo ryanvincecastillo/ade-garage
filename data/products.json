@@ -1,0 +1,194 @@
+[
+  {
+    "id": "1",
+    "slug": "sgp-raider-150-carb-reborn-body-cover",
+    "title": "SGP Raider 150 Carb Reborn Body Cover",
+    "description": "Suzuki Genuine Part body cover for Raider 150 Carb Reborn. OEM fit and finish.",
+    "price": 2450,
+    "currency": "PHP",
+    "category": "body",
+    "image": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&q=80",
+    "compatibility": "Suzuki Raider 150 Carb Reborn",
+    "featured": true,
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": "https://www.tiktok.com/@ade_garage",
+      "lazada": null
+    }
+  },
+  {
+    "id": "2",
+    "slug": "yasaki-lighten-hub-set-black",
+    "title": "Yasaki Lighten Hub Set Black",
+    "description": "Lightweight hub set for improved handling. Available in black finish.",
+    "price": 3200,
+    "currency": "PHP",
+    "category": "accessories",
+    "image": "https://images.unsplash.com/photo-1568778575539-326640c0a52f?w=800&q=80",
+    "featured": true,
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": "https://www.tiktok.com/@ade_garage",
+      "lazada": null
+    }
+  },
+  {
+    "id": "3",
+    "slug": "ninja-rr-ss-r-kampas-rem-original",
+    "title": "Kampas Rem Ninja RR SS/R Original Kawasaki",
+    "description": "100% original Kawasaki brake pads for Ninja RR SS and RR R models.",
+    "price": 850,
+    "currency": "PHP",
+    "category": "brakes",
+    "image": "https://images.unsplash.com/photo-1622185131045-472d331684fa?w=800&q=80",
+    "compatibility": "Kawasaki Ninja RR SS / RR R",
+    "featured": true,
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": null,
+      "lazada": null
+    }
+  },
+  {
+    "id": "4",
+    "slug": "rcb-hg-77-grip-set",
+    "title": "RCB HG 77 Grip Set",
+    "description": "Premium RCB hand grips — comfortable control for daily riding.",
+    "price": 750,
+    "currency": "PHP",
+    "category": "accessories",
+    "image": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80",
+    "featured": true,
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": "https://www.tiktok.com/@ade_garage",
+      "lazada": null
+    }
+  },
+  {
+    "id": "5",
+    "slug": "ninja-150-superkips-spring-governor",
+    "title": "Spring Governor SuperKips KR150",
+    "description": "Super Kips mechanical spring governor for Ninja 150 2-stroke engines.",
+    "price": 320,
+    "currency": "PHP",
+    "category": "engine",
+    "image": "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80",
+    "compatibility": "Kawasaki Ninja 150 KR / RR series",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": null,
+      "lazada": null
+    }
+  },
+  {
+    "id": "6",
+    "slug": "h4-ceramic-socket-headlight",
+    "title": "H4 Ceramic Socket Headlight",
+    "description": "Heat-resistant ceramic H4 socket for brighter, safer night riding.",
+    "price": 120,
+    "currency": "PHP",
+    "category": "electrical",
+    "image": "https://images.unsplash.com/photo-1511919888226-fd3cad34687d?w=800&q=80",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": "https://www.tiktok.com/@ade_garage",
+      "lazada": null
+    }
+  },
+  {
+    "id": "7",
+    "slug": "ninja-rr-chain-cover-plate",
+    "title": "Chain Cover Plate Ninja RR SS/R",
+    "description": "Minimalist chain cover — thick plate, clean look for Ninja RR SS/R.",
+    "price": 980,
+    "currency": "PHP",
+    "category": "chain",
+    "image": "https://images.unsplash.com/photo-1609630875175-b43a7108557c?w=800&q=80",
+    "compatibility": "Kawasaki Ninja RR SS / RR R",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": null,
+      "lazada": null
+    }
+  },
+  {
+    "id": "8",
+    "slug": "ninja-rr-temperature-sensor",
+    "title": "Temperature Sensor Ninja RR SS/R Original",
+    "description": "OEM temperature sensor for accurate engine monitoring.",
+    "price": 950,
+    "currency": "PHP",
+    "category": "electrical",
+    "image": "https://images.unsplash.com/photo-1487754180451-c364f0a9fc32?w=800&q=80",
+    "compatibility": "Kawasaki Ninja RR SS / RR R",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": null,
+      "lazada": null
+    }
+  },
+  {
+    "id": "9",
+    "slug": "ninja-150-head-kop-deksel",
+    "title": "Head Kop Deksel STD Silver Ninja 150",
+    "description": "Original Kawasaki cylinder head cover for Ninja 150 block 1827/1855.",
+    "price": 4500,
+    "currency": "PHP",
+    "category": "engine",
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    "compatibility": "Kawasaki Ninja 150 R / RL / M / SS",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": null,
+      "lazada": null
+    }
+  },
+  {
+    "id": "10",
+    "slug": "superkips-sticker-set-pdk-racing",
+    "title": "SuperKips Sticker Set PDK Racing",
+    "description": "1-set timbul SuperKips pad protector stickers for Ninja series.",
+    "price": 350,
+    "currency": "PHP",
+    "category": "accessories",
+    "image": "https://images.unsplash.com/photo-1558980664-769d59546b27?w=800&q=80",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": "https://www.tiktok.com/@ade_garage",
+      "lazada": null
+    }
+  },
+  {
+    "id": "11",
+    "slug": "ninja-rr-rectifier-original",
+    "title": "Rectifier Ninja RR SS/R Original",
+    "description": "Genuine charging rectifier — stable power for lights and ignition.",
+    "price": 1200,
+    "currency": "PHP",
+    "category": "electrical",
+    "image": "https://images.unsplash.com/photo-1623869665128-075b070645bb?w=800&q=80",
+    "compatibility": "Kawasaki Ninja RR SS / RR R",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": null,
+      "lazada": null
+    }
+  },
+  {
+    "id": "12",
+    "slug": "raider-150-side-cover-set",
+    "title": "Raider 150 Side Cover Set",
+    "description": "Replacement side cover set for Suzuki Raider 150. Message us to confirm year model.",
+    "price": 1800,
+    "currency": "PHP",
+    "category": "body",
+    "image": "https://images.unsplash.com/photo-1449426468159-d96dbf54f29c?w=800&q=80",
+    "compatibility": "Suzuki Raider 150 — confirm fitment",
+    "channels": {
+      "shopee": "https://shopee.ph/ade_garage",
+      "tiktokShop": "https://www.tiktok.com/@ade_garage",
+      "lazada": null
+    }
+  }
+]

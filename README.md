@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ADe Garage — Multi-Channel Brand Hub
 
-## Getting Started
+Official website for **ADe Garage** (Tagum City motorcycle parts). Customers browse the catalog and order on **Shopee**, **TikTok Shop**, **Messenger**, or **Lazada** (coming soon).
 
-First, run the development server:
+Built with Next.js 15, Tailwind CSS 4, and Framer Motion.
+
+## Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/                 Pages (home, shop, product detail)
+components/          UI, layout, animated sections
+data/products.json   Product catalog + channel links
+docs/                Discovery, proposal, launch checklist
+lib/                 Brand config, products helpers
+public/logo.jpg      Facebook profile logo
+```
 
-## Learn More
+## Updating products
 
-To learn more about Next.js, take a look at the following resources:
+Edit `data/products.json`. Each product supports per-channel URLs:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```json
+{
+  "channels": {
+    "shopee": "https://shopee.ph/...",
+    "tiktokShop": "https://www.tiktok.com/@ade_garage",
+    "lazada": null
+  }
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Replace Unsplash `image` URLs with real Shopee CDN images when export is available.
 
-## Deploy on Vercel
+## Docs
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [discovery.md](./docs/discovery.md) — channels & assets collected
+- [proposal.md](./docs/proposal.md) — client proposal for Denver
+- [LAUNCH.md](./docs/LAUNCH.md) — deploy & bio links
+- [PHASE2-SHOPIFY.md](./docs/PHASE2-SHOPIFY.md) — optional checkout upgrade
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+See [docs/LAUNCH.md](./docs/LAUNCH.md). Set `NEXT_PUBLIC_SITE_URL` to your production domain.
