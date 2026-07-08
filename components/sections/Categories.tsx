@@ -25,11 +25,12 @@ const iconMap = {
 
 export default function Categories() {
   return (
-    <section className="bg-ade-orange-light/50 py-20">
-      <div className="section-container">
+    <section className="relative overflow-hidden bg-ade-blue-deep py-20">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,200,240,0.08)_0%,transparent_70%)]" />
+      <div className="section-container relative">
         <Reveal className="mb-12 text-center">
           <p className="section-eyebrow">Categories</p>
-          <h2 className="section-title mt-2">Shop by part type</h2>
+          <h2 className="section-title mt-2 text-white">Shop by part type</h2>
         </Reveal>
 
         <motion.div
@@ -45,12 +46,16 @@ export default function Categories() {
               <motion.div key={cat.id} variants={staggerItem}>
                 <Link
                   href={`/shop?category=${cat.id}`}
-                  className="garage-card flex items-center gap-4 p-5 transition hover:-translate-y-0.5 hover:shadow-lg"
+                  className="group flex items-center gap-4 rounded-2xl border border-ade-border bg-ade-surface p-5 transition hover:-translate-y-1 hover:border-ade-cyan/40 hover:shadow-[0_0_30px_rgba(0,200,240,0.15)]"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ade-charcoal text-ade-orange">
+                  <motion.div
+                    whileHover={{ rotate: [0, -8, 8, 0] }}
+                    transition={{ duration: 0.5 }}
+                    className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-ade-cyan to-ade-blue text-white"
+                  >
                     <Icon size={22} />
-                  </div>
-                  <span className="font-display text-lg font-bold text-ade-charcoal">
+                  </motion.div>
+                  <span className="font-display text-lg font-bold text-white transition group-hover:text-ade-cyan">
                     {cat.label}
                   </span>
                 </Link>

@@ -49,7 +49,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="section-container py-8">
           <Link
             href="/shop"
-            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-ade-steel hover:text-ade-orange"
+            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-ade-steel hover:text-ade-cyan"
           >
             <ArrowLeft size={16} />
             Back to catalog
@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: Props) {
 
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <p className="text-xs font-bold uppercase tracking-widest text-ade-orange">
+                <p className="text-xs font-bold uppercase tracking-widest text-ade-cyan">
                   {categoryLabel}
                 </p>
                 {typeLabel && (
@@ -75,7 +75,7 @@ export default async function ProductPage({ params }: Props) {
                     className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
                       product.productType === "thai-concept"
                         ? "bg-ade-accent text-ade-charcoal"
-                        : "bg-ade-orange-light text-ade-charcoal"
+                        : "bg-ade-cyan-light text-ade-charcoal"
                     }`}
                   >
                     {typeLabel}
@@ -85,11 +85,11 @@ export default async function ProductPage({ params }: Props) {
               <h1 className="font-display mt-2 text-2xl font-extrabold text-ade-charcoal sm:text-3xl">
                 {product.title}
               </h1>
-              <p className="font-display mt-4 text-3xl font-extrabold text-ade-orange">
+              <p className="font-display mt-4 text-3xl font-extrabold text-gradient-cyan">
                 {formatPrice(product.price, product.currency)}
               </p>
               {product.compatibility && (
-                <p className="mt-3 rounded-lg bg-ade-orange-light px-4 py-2 text-sm text-ade-charcoal">
+                <p className="mt-3 rounded-lg bg-ade-cyan-light px-4 py-2 text-sm text-ade-charcoal">
                   Fits: {product.compatibility}
                 </p>
               )}

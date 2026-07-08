@@ -87,7 +87,7 @@ export default function HeroPlatformDock() {
         );
 
         return (
-          <motion.div key={p.id} variants={staggerItem}>
+          <motion.div key={p.id} variants={staggerItem} whileHover={{ scale: 1.02 }}>
             {p.disabled || !p.href ? (
               <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 opacity-60">
                 {inner}
@@ -97,7 +97,7 @@ export default function HeroPlatformDock() {
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur transition hover:border-ade-orange/40 hover:bg-white/15 active:scale-[0.98]"
+                className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur transition hover:border-ade-cyan/50 hover:bg-white/15 hover:shadow-[0_0_24px_rgba(0,200,240,0.2)] active:scale-[0.98]"
               >
                 {inner}
               </a>

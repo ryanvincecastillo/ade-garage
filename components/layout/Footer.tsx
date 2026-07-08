@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="section-container py-12">
         <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-white/10 ring-1 ring-white/15">
+            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-white/10 ring-1 ring-ade-cyan/30">
               <Image
                 src="/logo.png"
                 alt="ADe Garage"
@@ -30,7 +30,7 @@ export default function Footer() {
 
         <div className="grid gap-8 border-t border-white/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-orange">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-cyan">
               Shop channels
             </h3>
             <ul className="space-y-2.5">
@@ -55,12 +55,12 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-orange">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-cyan">
               Visit us
             </h3>
             <ul className="space-y-2.5 text-sm text-white/70">
               <li className="flex items-start gap-2">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-ade-orange" />
+                <MapPin size={16} className="mt-0.5 shrink-0 text-ade-cyan" />
                 {brand.site.location}
               </li>
               <li>
@@ -74,7 +74,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone size={16} className="text-ade-orange" />
+                <Phone size={16} className="text-ade-cyan" />
                 <a href={`tel:${brand.site.phone.replace(/\s/g, "")}`} className="hover:text-white">
                   {brand.site.phone}
                 </a>
@@ -83,7 +83,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-orange">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-cyan">
               Social
             </h3>
             <ul className="space-y-2.5">
@@ -121,7 +121,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-orange">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-ade-cyan">
               Quick links
             </h3>
             <ul className="space-y-2.5">

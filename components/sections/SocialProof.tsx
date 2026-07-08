@@ -8,17 +8,17 @@ export default function SocialProof() {
   return (
     <section className="section-container py-20">
       <Reveal>
-        <div className="overflow-hidden rounded-2xl border border-ade-border bg-ade-charcoal text-white">
+        <div className="overflow-hidden rounded-2xl border border-ade-border bg-ade-charcoal text-white shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
           <div className="grid lg:grid-cols-2">
             <div className="p-8 sm:p-10">
-              <p className="text-xs font-bold uppercase tracking-widest text-ade-orange">
+              <p className="text-xs font-bold uppercase tracking-widest text-ade-cyan">
                 Visit us
               </p>
               <h2 className="font-display mt-2 text-2xl font-bold sm:text-3xl">
                 {brand.site.followers} riders trust ADe Garage
               </h2>
               <p className="mt-4 flex items-start gap-2 text-white/70">
-                <MapPin size={18} className="mt-0.5 shrink-0 text-ade-orange" />
+                <MapPin size={18} className="mt-0.5 shrink-0 text-ade-cyan" />
                 {brand.site.location} — serving riders nationwide
               </p>
               <p className="mt-3 text-sm text-white/60">
@@ -53,8 +53,8 @@ export default function SocialProof() {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-4 bg-gradient-to-br from-ade-orange/20 to-ade-charcoal p-8 sm:p-10">
-              <p className="text-sm font-semibold uppercase tracking-widest text-ade-orange">
+            <div className="flex flex-col justify-center gap-4 bg-gradient-to-br from-ade-cyan/15 via-ade-blue/20 to-ade-charcoal p-8 sm:p-10">
+              <p className="text-sm font-semibold uppercase tracking-widest text-ade-cyan">
                 Order on
               </p>
               <ul className="space-y-2 text-white/80">

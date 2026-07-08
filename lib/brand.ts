@@ -1,12 +1,16 @@
 export const brand = {
   colors: {
-    orange: "#FF6B00",
-    orangeLight: "#FFF3E8",
-    charcoal: "#1A1A1A",
-    charcoalLight: "#2D2D2D",
-    steel: "#4A5568",
+    cyan: "#00C8F0",
+    cyanLight: "#E6FBFF",
+    blue: "#1E4FD0",
+    blueDeep: "#0A1628",
+    charcoal: "#0B0F14",
+    charcoalLight: "#1A2230",
+    surface: "#121820",
+    steel: "#8B9CB3",
+    chrome: "#C8D4E0",
     white: "#FFFFFF",
-    accent: "#FFD600",
+    accent: "#F5C400",
   },
   site: {
     name: "ADe Garage",

@@ -7,7 +7,7 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="border-y border-ade-border bg-white py-20">
+    <section id="how-it-works" className="border-y border-ade-border-light bg-white py-20">
       <div className="section-container">
         <Reveal className="mb-12 text-center">
           <p className="section-eyebrow">How it works</p>
@@ -25,9 +25,10 @@ export default function HowItWorks() {
             <motion.li
               key={step.step}
               variants={staggerItem}
-              className="rounded-2xl border border-ade-border bg-ade-orange-light/30 p-6"
+              whileHover={{ y: -4, boxShadow: "0 12px 40px rgba(0,200,240,0.12)" }}
+              className="rounded-2xl border border-ade-border-light bg-gradient-to-br from-ade-cyan-light/40 to-white p-6 transition"
             >
-              <span className="font-display text-4xl font-extrabold text-ade-orange/40">
+              <span className="font-display text-4xl font-extrabold text-ade-cyan/30">
                 {String(step.step).padStart(2, "0")}
               </span>
               <h3 className="font-display mt-2 text-lg font-bold text-ade-charcoal">

@@ -1,13 +1,25 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-ade-orange: #ff6b00;
-  --color-ade-orange-light: #fff3e8;
-  --color-ade-charcoal: #1a1a1a;
-  --color-ade-charcoal-light: #2d2d2d;
-  --color-ade-steel: #4a5568;
-  --color-ade-accent: #ffd600;
-  --color-ade-border: #e8e4df;
+  /* Logo-derived palette */
+  --color-ade-cyan: #00c8f0;
+  --color-ade-cyan-light: #e6fbff;
+  --color-ade-cyan-glow: rgba(0, 200, 240, 0.45);
+  --color-ade-blue: #1e4fd0;
+  --color-ade-blue-deep: #0a1628;
+  --color-ade-charcoal: #0b0f14;
+  --color-ade-charcoal-light: #1a2230;
+  --color-ade-surface: #121820;
+  --color-ade-steel: #8b9cb3;
+  --color-ade-chrome: #c8d4e0;
+  --color-ade-accent: #f5c400;
+  --color-ade-border: #2a3548;
+  --color-ade-border-light: #e2e8f0;
+
+  /* Legacy alias — maps old orange refs to cyan during migration */
+  --color-ade-orange: #00c8f0;
+  --color-ade-orange-light: #e6fbff;
+
   --font-sans: var(--font-plus-jakarta);
   --font-display: var(--font-outfit);
 }
@@ -17,7 +29,7 @@ html {
 }
 
 body {
-  background: #fafafa;
+  background: #f4f7fb;
   color: var(--color-ade-charcoal);
   font-family: var(--font-plus-jakarta), system-ui, sans-serif;
 }
@@ -45,7 +57,7 @@ body {
 }
 
 .section-eyebrow {
-  @apply text-xs font-bold uppercase tracking-widest text-ade-orange;
+  @apply text-xs font-bold uppercase tracking-widest text-ade-cyan;
 }
 
 .section-title {
@@ -53,27 +65,83 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-xl bg-ade-orange px-5 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-orange-600 hover:shadow-lg active:scale-[0.98];
+  @apply inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-ade-cyan to-ade-blue px-5 py-2.5 text-sm font-bold text-white shadow-[0_4px_20px_rgba(0,200,240,0.35)] transition hover:shadow-[0_6px_28px_rgba(0,200,240,0.5)] active:scale-[0.98];
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-xl border border-ade-border bg-white px-5 py-2.5 text-sm font-bold text-ade-charcoal transition hover:border-ade-orange hover:shadow-sm;
+  @apply inline-flex items-center justify-center rounded-xl border border-ade-border bg-white px-5 py-2.5 text-sm font-bold text-ade-charcoal transition hover:border-ade-cyan hover:shadow-[0_0_20px_rgba(0,200,240,0.15)];
 }
 
 .garage-card {
-  @apply rounded-2xl border border-ade-border bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)];
+  @apply rounded-2xl border border-ade-border bg-ade-surface shadow-[0_4px_24px_rgba(0,0,0,0.25)];
+}
+
+.garage-card-light {
+  @apply rounded-2xl border border-ade-border-light bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)];
 }
 
 .hero-workshop-bg {
   background-color: var(--color-ade-charcoal);
   background-image:
-    linear-gradient(135deg, rgba(255, 107, 0, 0.12) 0%, transparent 50%),
-    linear-gradient(225deg, rgba(255, 214, 0, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0, 200, 240, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(30, 79, 208, 0.2) 0%, transparent 55%),
+    linear-gradient(180deg, #0b0f14 0%, #0a1628 100%),
     repeating-linear-gradient(
       -45deg,
       transparent,
       transparent 40px,
-      rgba(255, 107, 0, 0.03) 40px,
-      rgba(255, 107, 0, 0.03) 41px
+      rgba(0, 200, 240, 0.02) 40px,
+      rgba(0, 200, 240, 0.02) 41px
     );
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00c8f0 0%, #c8d4e0 50%, #00c8f0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.02);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
 }

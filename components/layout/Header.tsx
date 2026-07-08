@@ -37,13 +37,13 @@ export default function Header() {
       transition={spring}
       className={`fixed inset-x-0 top-0 z-50 backdrop-blur-xl transition-shadow duration-300 ${
         scrolled
-          ? "bg-ade-charcoal/95 shadow-[0_1px_0_rgba(255,107,0,0.15)]"
+          ? "bg-ade-charcoal/95 shadow-[0_1px_0_rgba(0,200,240,0.2)]"
           : "bg-ade-charcoal/80"
       }`}
     >
       <div className="section-container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-white/10 ring-1 ring-white/15">
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-white/10 ring-1 ring-ade-cyan/30">
             <Image
               src="/logo.png"
               alt="ADe Garage"
@@ -63,7 +63,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-white/70 transition hover:text-ade-orange"
+              className="text-sm font-medium text-white/70 transition hover:text-ade-cyan"
             >
               {link.label}
             </Link>

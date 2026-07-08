@@ -6,7 +6,7 @@ import { Search } from "lucide-react";
 import MotionProvider from "@/components/motion/MotionProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import ProductCard from "@/components/ui/ProductCard";
+import ProductRevealCard from "@/components/ui/ProductRevealCard";
 import Reveal from "@/components/motion/Reveal";
 import { categories, type CategoryId } from "@/lib/brand";
 import { getAllProducts, type ProductTypeFilter } from "@/lib/products";
@@ -43,11 +43,12 @@ export default function ShopContent() {
   return (
     <MotionProvider>
       <Header />
-      <main className="min-h-screen pt-16">
-        <div className="border-b border-ade-border bg-ade-charcoal py-12 text-white">
-          <div className="section-container">
+      <main className="min-h-screen bg-[#f4f7fb] pt-16">
+        <div className="hero-workshop-bg relative overflow-hidden py-12 text-white">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(0,200,240,0.12)_0%,transparent_60%)]" />
+          <div className="section-container relative">
             <Reveal>
-              <p className="text-xs font-bold uppercase tracking-widest text-ade-orange">
+              <p className="text-xs font-bold uppercase tracking-widest text-ade-cyan">
                 Catalog
               </p>
               <h1 className="font-display mt-2 text-3xl font-extrabold sm:text-4xl">
@@ -76,8 +77,8 @@ export default function ShopContent() {
                 onClick={() => setProductType(t.id)}
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                   productType === t.id
-                    ? "bg-ade-accent text-ade-charcoal"
-                    : "bg-white text-ade-steel ring-1 ring-ade-border hover:ring-ade-orange"
+                    ? "bg-ade-accent text-ade-charcoal shadow-md"
+                    : "bg-white text-ade-steel ring-1 ring-ade-border-light hover:ring-ade-cyan"
                 }`}
               >
                 {t.label}
@@ -96,7 +97,7 @@ export default function ShopContent() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search parts, models..."
-                className="w-full rounded-xl border border-ade-border bg-white py-3 pl-10 pr-4 text-sm outline-none focus:border-ade-orange focus:ring-2 focus:ring-ade-orange/20"
+                className="w-full rounded-xl border border-ade-border-light bg-white py-3 pl-10 pr-4 text-sm outline-none focus:border-ade-cyan focus:ring-2 focus:ring-ade-cyan/20"
               />
             </div>
             <div className="flex flex-wrap gap-2">
@@ -105,8 +106,8 @@ export default function ShopContent() {
                 onClick={() => setCategory("all")}
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                   category === "all"
-                    ? "bg-ade-orange text-white"
-                    : "bg-white text-ade-steel ring-1 ring-ade-border hover:ring-ade-orange"
+                    ? "bg-gradient-to-r from-ade-cyan to-ade-blue text-white shadow-md"
+                    : "bg-white text-ade-steel ring-1 ring-ade-border-light hover:ring-ade-cyan"
                 }`}
               >
                 All categories
@@ -118,8 +119,8 @@ export default function ShopContent() {
                   onClick={() => setCategory(cat.id)}
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                     category === cat.id
-                      ? "bg-ade-orange text-white"
-                      : "bg-white text-ade-steel ring-1 ring-ade-border hover:ring-ade-orange"
+                      ? "bg-gradient-to-r from-ade-cyan to-ade-blue text-white shadow-md"
+                      : "bg-white text-ade-steel ring-1 ring-ade-border-light hover:ring-ade-cyan"
                   }`}
                 >
                   {cat.label}
@@ -136,7 +137,7 @@ export default function ShopContent() {
             <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {products.map((product, i) => (
                 <Reveal key={product.id} delay={Math.min(i * 0.05, 0.4)} className="h-full">
-                  <ProductCard product={product} />
+                  <ProductRevealCard product={product} />
                 </Reveal>
               ))}
             </div>
